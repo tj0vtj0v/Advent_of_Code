@@ -38,11 +38,15 @@ def follow_pos_calc(xhead, yhead, follower_position_per_move:list[str]):
     ydist = float(yhead-ytail)
     if abs(xdist) > 1:
         xtail += xdist/2
-        if abs(ydist) > 0:
+        if abs(ydist) > 1:
+            ytail += ydist/2
+        elif abs(ydist) > 0:
             ytail += ydist
     elif abs(ydist) > 1:
         ytail += ydist/2
-        if abs(xdist) > 0:
+        if abs(xdist) > 1:
+            xtail += xdist/2
+        elif abs(xdist) > 0:
             xtail += xdist
     if ytail == 0:
         ytail = 0.0
