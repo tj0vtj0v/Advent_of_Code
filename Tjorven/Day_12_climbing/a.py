@@ -1,0 +1,1 @@
+print(ord("S"), ord("E"), ord("a"), ord("z"))
