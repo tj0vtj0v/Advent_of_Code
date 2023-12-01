@@ -1,5 +1,6 @@
 import os
 import math
+
 inputfile = open(os.path.join(os.path.dirname(__file__), 'input_monkeys.txt'), "r")
 inputtext = inputfile.readlines()
 
@@ -27,18 +28,18 @@ for line in inputtext:
         monkeys.append(monkey)
         monkey = []
 monkey.append(0)
-monkeys.append(monkey)        
+monkeys.append(monkey)
 
 for count in range(20):
     for monkey in monkeys:
         round = []
         for item in monkey[0]:
-            monkey[5]+=1
+            monkey[5] += 1
             worry = int(item)
             worry = int(eval(monkey[1].replace("old", "worry")))
 
-            worry = math.floor(worry/3)
-            if worry%int(monkey[2]) == 0:
+            worry = math.floor(worry / 3)
+            if worry % int(monkey[2]) == 0:
                 monkeys[int(monkey[3])][0].append(worry)
             else:
                 monkeys[int(monkey[4])][0].append(worry)
@@ -48,19 +49,19 @@ inspection = []
 for monkey in monkeys:
     inspection.append(monkey[5])
 inspection.sort()
-print("monkey business in 20 rounds: " + str(inspection[-1]*inspection[-2]))
+print("monkey business in 20 rounds: " + str(inspection[-1] * inspection[-2]))
 
 for count in range(10000):
     for monkey in monkeys:
         round = []
         for item in monkey[0]:
-            monkey[5]+=1
+            monkey[5] += 1
             worry = int(item)
             worry = int(eval(monkey[1].replace("old", "worry")))
 
-            #worry = math.floor(worry/3)
-            worry = worry%math.lcm(11, 5, 7, 2, 17, 13, 3, 19)
-            if worry%int(monkey[2]) == 0:
+            # worry = math.floor(worry/3)
+            worry = worry % math.lcm(11, 5, 7, 2, 17, 13, 3, 19)
+            if worry % int(monkey[2]) == 0:
                 monkeys[int(monkey[3])][0].append(worry)
             else:
                 monkeys[int(monkey[4])][0].append(worry)
@@ -70,4 +71,4 @@ inspection = []
 for monkey in monkeys:
     inspection.append(monkey[5])
 inspection.sort()
-print("monkey business in 10000 rounds: " + str(inspection[-1]*inspection[-2]))
+print("monkey business in 10000 rounds: " + str(inspection[-1] * inspection[-2]))
