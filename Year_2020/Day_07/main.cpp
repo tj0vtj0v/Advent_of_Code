@@ -3,100 +3,11 @@
 //
 
 #include <iostream>
-#include <map>
-#include <set>
-#include <utility>
 #include <vector>
 #include "../Text.cpp"
-
-class Bag;
-class Content;
+#include "Bag.h"
 
 using namespace std;
-
-
-class Bag {
-public:
-    explicit Bag(const string &description);
-
-    bool operator<(const Bag &other) const;
-
-    string getType();
-
-    string getContent();
-
-    int addChild(Bag *bag, int quantity);
-
-    int addParent(Bag *bag, int quantity);
-
-    set<Bag *> findParentBags(set<Bag *> found);
-    int calculateInnerBags();
-
-private:
-    string type;
-    string content;
-    map<Bag *, int> children = {};
-    map<Bag *, int> parents = {};
-};
-
-Bag::Bag(const string &description) {
-    string splitText = " bags contain ";
-    int splitStart = description.find(splitText);
-
-    type = description.substr(0, splitStart);
-    content = description.substr(splitStart + splitText.length());
-}
-
-bool Bag::operator<(const Bag &other) const {
-    return type < other.type;
-}
-
-string Bag::getType() {
-    return type;
-}
-
-
-string Bag::getContent() {
-    return content;
-}
-
-int Bag::addChild(Bag *bag, int quantity) {
-    children[bag] = quantity;
-
-    return 0;
-}
-
-int Bag::addParent(Bag *bag, int quantity) {
-    parents[bag] = quantity;
-
-    return 0;
-}
-
-set<Bag *> Bag::findParentBags(set<Bag *> found) {
-    if (parents.empty()) {
-        return found;
-    }
-
-    for (auto &parent: parents) {
-        found = parent.first->findParentBags(found);
-        if (found.count(parent.first) == 0) {
-            found.insert(parent.first);
-            found.merge(parent.first->findParentBags(found));
-        }
-    }
-
-    return found;
-}
-
-int Bag::calculateInnerBags() {
-    int a = 0;
-
-    for (auto child: children) {
-        a += child.second * (child.first->calculateInnerBags() + 1);
-    }
-
-    return a;
-}
 
 int manageBag(Bag *bag, const string &currentBag, vector<Bag> &bags) {
     if (currentBag.substr(0, 1).find_first_not_of("0123456789") < 1) {
@@ -180,7 +91,7 @@ int second(const vector<string> &input) {
 }
 
 int main() {
-    const vector<string> input = read("Input/Day_07");
+    const vector<string> input = read("../Input/Day_07");
 
     first(input);
     cout << endl;

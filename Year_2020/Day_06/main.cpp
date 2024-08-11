@@ -3,57 +3,11 @@
 //
 
 #include <iostream>
-#include <set>
 #include <vector>
 #include "../Text.cpp"
+#include "Decleration.h"
 
 using namespace std;
-
-class Decleration {
-public:
-    explicit Decleration(const vector<string> &group);
-
-    unsigned long affirmedQuestions();
-
-    int collectivelyAffirmedQuestions();
-
-private:
-    int groupSize = 0;
-    vector<char> affirmed;
-    set<char> affirmedWithoutDoublicates;
-};
-
-Decleration::Decleration(const vector<string> &group) {
-    for (const auto &member: group) {
-        if (!member.empty()) {
-            groupSize += 1;
-
-            for (auto question: member) {
-                affirmed.push_back(question);
-                affirmedWithoutDoublicates.insert(question);
-            }
-        }
-    }
-}
-
-unsigned long Decleration::affirmedQuestions() {
-    return affirmedWithoutDoublicates.size();
-}
-
-int Decleration::collectivelyAffirmedQuestions() {
-    int collectivelyAffirmed = 0;
-    for (auto question: affirmedWithoutDoublicates) {
-        int affirmationCount = 0;
-        for (auto answer: affirmed) {
-            affirmationCount += question == answer;
-        }
-
-        collectivelyAffirmed += affirmationCount == groupSize;
-    }
-
-    return collectivelyAffirmed;
-}
-
 
 vector<Decleration> createDeclerations(const vector<string> &input) {
     vector<Decleration> declerations;
@@ -96,7 +50,7 @@ int second(const vector<string> &input) {
 }
 
 int main() {
-    const vector<string> input = read("Input/Day_06");
+    const vector<string> input = read("../Input/Day_06");
 
     first(input);
     cout << endl;
