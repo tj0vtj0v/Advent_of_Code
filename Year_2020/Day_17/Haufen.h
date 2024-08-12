@@ -16,6 +16,8 @@ class Haufen {
 public:
     Haufen();
 
+    int size();
+
     int addElement(D cube);
 
     vector<D> getElementByOccurrence(int occurrence);

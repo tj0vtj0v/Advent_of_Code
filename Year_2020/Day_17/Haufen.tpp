@@ -8,6 +8,11 @@ template <class D>
 Haufen<D>::Haufen() = default;
 
 template <class D>
+int Haufen<D>::size() {
+    return haufen.size();
+}
+
+template <class D>
 int Haufen<D>::addElement(D cube) {
     if (haufen.count(cube) == 0) {
         haufen[cube] = 1;

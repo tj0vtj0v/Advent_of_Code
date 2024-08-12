@@ -15,7 +15,7 @@ public:
     explicit ConwayCube();
 
 protected:
-    Haufen<Cube> createHaufen();
+    Haufen<Cube> createHaufen() override;
 };
 
 #include "ConwayCube.tpp"

@@ -27,7 +27,7 @@ public:
     int advanceToGeneration(int generation);
 
 protected:
-    Haufen<D> createHaufen() { return Haufen<D>(); };
+    virtual Haufen<D> createHaufen() { return Haufen<D>(); };
 
     vector<D> determineSubsequentActiveCubes(Haufen<D> &haufen);
 

@@ -13,7 +13,6 @@ using namespace std;
 
 class Cube {
 public:
-    Cube();
     explicit Cube(tuple<int, int, int> coordinate);
 
     bool operator==(Cube &other);

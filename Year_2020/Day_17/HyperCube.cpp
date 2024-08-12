@@ -20,6 +20,18 @@ tuple<int, int, int, int> HyperCube::getCoordinate() {
     return coordinate;
 }
 
+int HyperCube::getX() {
+    return get<0>(coordinate);
+}
+
+int HyperCube::getY() {
+    return get<1>(coordinate);
+}
+
+int HyperCube::getZ() {
+    return get<2>(coordinate);
+}
+
 int HyperCube::getW() {
     return get<3>(coordinate);
 }

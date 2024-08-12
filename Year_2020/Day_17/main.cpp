@@ -54,11 +54,11 @@ int first(const vector<string> &input) {
 }
 
 int second(const vector<string> &input) {
-    ConwayHyperCube cube = createHyperCube(input);
+    ConwayHyperCube hyperCube = createHyperCube(input);
 
-    cube.advanceToGeneration(6);
+    hyperCube.advanceToGeneration(6);
 
-    cout << cube.size();
+    cout << hyperCube.size();
 
     return 0;
 }

@@ -12,7 +12,7 @@ using namespace std;
 #define YEAR_2020_HYPERCUBE_H
 
 
-class HyperCube: public Cube{
+class HyperCube {
 public:
     explicit HyperCube(tuple<int, int, int, int> a);
 
@@ -20,6 +20,12 @@ public:
     bool operator<(const HyperCube &other) const;
 
     tuple<int, int, int, int> getCoordinate();
+
+    int getX();
+
+    int getY();
+
+    int getZ();
 
     int getW();
 
