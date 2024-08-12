@@ -2,13 +2,14 @@
 // Created by Tjorven on 11.08.2024.
 //
 
+#ifndef YEAR_2020_SEAT_H
+#define YEAR_2020_SEAT_H
+
+
 #include <iostream>
 #include <cmath>
 
 using namespace std;
-
-#ifndef YEAR_2020_SEAT_H
-#define YEAR_2020_SEAT_H
 
 
 class Seat {
@@ -29,5 +30,6 @@ private:
     double ID;
 };
 
+#include "Seat.cpp"
 
 #endif //YEAR_2020_SEAT_H

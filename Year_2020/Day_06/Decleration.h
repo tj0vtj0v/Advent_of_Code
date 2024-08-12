@@ -2,14 +2,15 @@
 // Created by Tjorven on 11.08.2024.
 //
 
+#ifndef YEAR_2020_DECLERATION_H
+#define YEAR_2020_DECLERATION_H
+
+
 #include <iostream>
 #include <vector>
 #include <set>
 
 using namespace std;
-
-#ifndef YEAR_2020_DECLERATION_H
-#define YEAR_2020_DECLERATION_H
 
 
 class Decleration {
@@ -26,5 +27,6 @@ private:
     set<char> affirmedWithoutDoublicates;
 };
 
+#include "Decleration.cpp"
 
 #endif //YEAR_2020_DECLERATION_H

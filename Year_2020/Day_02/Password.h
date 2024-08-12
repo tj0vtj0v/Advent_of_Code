@@ -2,13 +2,13 @@
 // Created by Tjorven on 11.08.2024.
 //
 
-#include <iostream>
-
-using namespace std;
-
 #ifndef YEAR_2020_PASSWORD_H
 #define YEAR_2020_PASSWORD_H
 
+
+#include <iostream>
+
+using namespace std;
 
 class Password {
 public:
@@ -26,5 +26,6 @@ private:
     int second_number;
 };
 
+#include "Password.cpp"
 
 #endif //YEAR_2020_PASSWORD_H

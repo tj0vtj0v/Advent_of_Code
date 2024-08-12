@@ -2,15 +2,15 @@
 // Created by Tjorven on 11.08.2024.
 //
 
+#ifndef YEAR_2020_PROGRAM_H
+#define YEAR_2020_PROGRAM_H
+
+
 #include <iostream>
 #include <vector>
 #include <tuple>
 
 using namespace std;
-
-#ifndef YEAR_2020_PROGRAM_H
-#define YEAR_2020_PROGRAM_H
-
 
 class Program {
 public:
@@ -37,5 +37,6 @@ private:
     int accumulator;
 };
 
+#include "Program.cpp"
 
 #endif //YEAR_2020_PROGRAM_H

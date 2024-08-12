@@ -2,13 +2,14 @@
 // Created by Tjorven on 11.08.2024.
 //
 
+#ifndef YEAR_2020_MAP_H
+#define YEAR_2020_MAP_H
+
+
 #include <iostream>
 #include <vector>
 
 using namespace std;
-
-#ifndef YEAR_2020_MAP_H
-#define YEAR_2020_MAP_H
 
 
 class Map {
@@ -23,5 +24,6 @@ private:
     vector<string> map;
 };
 
+#include "Map.cpp"
 
 #endif //YEAR_2020_MAP_H

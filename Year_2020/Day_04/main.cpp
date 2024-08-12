@@ -9,8 +9,6 @@
 
 using namespace std;
 
-vector<string> Fields{"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid"};
-
 vector<Passport> createPassports(const vector<string> &text) {
     vector<Passport> passports;
 
