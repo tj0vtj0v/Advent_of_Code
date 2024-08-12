@@ -4,8 +4,6 @@
 
 #include "Cube.h"
 
-Cube::Cube() = default;
-
 Cube::Cube(tuple<int, int, int> coordinate) {
     this->coordinate = coordinate;
 }
