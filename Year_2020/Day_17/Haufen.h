@@ -2,14 +2,15 @@
 // Created by Tjorven on 11.08.2024.
 //
 
+#ifndef YEAR_2020_HAUFEN_H
+#define YEAR_2020_HAUFEN_H
+
+
 #include <iostream>
 #include <vector>
 #include <map>
 
 using namespace std;
-
-#ifndef YEAR_2020_HAUFEN_H
-#define YEAR_2020_HAUFEN_H
 
 template <size_t V>
 class Haufen {

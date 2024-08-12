@@ -52,7 +52,7 @@ int second(const vector<string> &input) {
 }
 
 int main() {
-    const vector<string> input = read("Input/Day_17");
+    const vector<string> input = read("../Input/Day_17");
 
     first(input);
     cout << endl;
