@@ -4,33 +4,33 @@
 
 #include "GameOfLife.h"
 
-template <class D>
-GameOfLife<D>::GameOfLife() {
+template<size_t V>
+GameOfLife<V>::GameOfLife() {
     active = {};
 }
 
-template <class D>
-unsigned long GameOfLife<D>::size() {
+template<size_t V>
+unsigned long GameOfLife<V>::size() {
     return active.size();
 }
 
-template <class D>
-int GameOfLife<D>::addActive(D &cell) {
+template<size_t V>
+int GameOfLife<V>::addActive(array<int, V> &cell) {
     active.push_back(cell);
 
     return 0;
 }
 
-template <class D>
-int GameOfLife<D>::advanceGeneration() {
+template<size_t V>
+int GameOfLife<V>::advanceGeneration() {
     auto haufen = createHaufen();
     active = determineSubsequentActiveCubes(haufen);
 
     return 0;
 }
 
-template <class D>
-int GameOfLife<D>::advanceToGeneration(int generation) {
+template<size_t V>
+int GameOfLife<V>::advanceToGeneration(int generation) {
     for (int i = 0; i < generation; ++i) {
         advanceGeneration();
     }
@@ -38,9 +38,37 @@ int GameOfLife<D>::advanceToGeneration(int generation) {
     return 0;
 }
 
-template <class D>
-vector<D> GameOfLife<D>::determineSubsequentActiveCubes(Haufen<D> &haufen) {
-    vector<D> nextActiveCubes;
+template<size_t V>
+Haufen<V> GameOfLife<V>::createHaufen() {
+    Haufen<V> haufen = Haufen<V>();
+
+    for (auto cell: this->active) {
+        addNeighbours(haufen, V, cell, true);
+    }
+
+    return haufen;
+}
+
+template<size_t V>
+int GameOfLife<V>::addNeighbours(Haufen<V> &haufen, int dimension, array<int, V> cell, bool allNull) {
+
+    if (dimension > 0) {
+        cell[V - dimension] -= 1;
+        addNeighbours(haufen, dimension - 1, cell, false);
+        cell[V - dimension] += 1;
+        addNeighbours(haufen, dimension - 1, cell, allNull);
+        cell[V - dimension] += 1;
+        addNeighbours(haufen, dimension - 1, cell, false);
+    } else if (!allNull) {
+        haufen.addElement(cell);
+    }
+
+    return 0;
+}
+
+template<size_t V>
+vector<array<int, V>> GameOfLife<V>::determineSubsequentActiveCubes(Haufen<V> &haufen) {
+    vector<array<int, V>> nextActiveCubes;
 
     for (auto cube: haufen.getElementByOccurrence(2)) {
         for (auto livingCube: active) {

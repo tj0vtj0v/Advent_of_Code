@@ -5,33 +5,33 @@
 #include <iostream>
 #include <vector>
 #include "Haufen.h"
-#include "Cube.h"
-#include "HyperCube.h"
 
 using namespace std;
 
 #ifndef YEAR_2020_GAMEOFLIFE_H
 #define YEAR_2020_GAMEOFLIFE_H
 
-template<class D>
+template<size_t V>
 class GameOfLife {
 public:
     explicit GameOfLife();
 
     unsigned long size();
 
-    int addActive(D &cell);
+    int addActive(array<int, V> &cell);
 
     int advanceGeneration();
 
     int advanceToGeneration(int generation);
 
 protected:
-    virtual Haufen<D> createHaufen() { return Haufen<D>(); };
+    Haufen<V> createHaufen();
 
-    vector<D> determineSubsequentActiveCubes(Haufen<D> &haufen);
+    int addNeighbours(Haufen<V> &haufen, int dimension, array<int, V> cell, bool allNull);
 
-    vector<D> active;
+    vector<array<int, V>> determineSubsequentActiveCubes(Haufen<V> &haufen);
+
+    vector<array<int, V>> active;
 };
 
 #include "GameOfLife.tpp"

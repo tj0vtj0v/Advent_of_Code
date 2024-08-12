@@ -11,19 +11,17 @@ using namespace std;
 #ifndef YEAR_2020_HAUFEN_H
 #define YEAR_2020_HAUFEN_H
 
-template <class D>
+template <size_t V>
 class Haufen {
 public:
     Haufen();
 
-    int size();
+    int addElement(array<int, V> cell);
 
-    int addElement(D cube);
-
-    vector<D> getElementByOccurrence(int occurrence);
+    vector<array<int, V>> getElementByOccurrence(int occurrence);
 
 private:
-    map<D, int> haufen;
+    map<array<int, V>, int> haufen;
 };
 
 #include "Haufen.tpp"

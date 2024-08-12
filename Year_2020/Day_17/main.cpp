@@ -4,67 +4,55 @@
 
 #include <iostream>
 #include <vector>
+#include <array>
 #include "../Text.cpp"
-#include "ConwayCube.h"
-#include "ConwayHyperCube.h"
+#include "GameOfLife.h"
 
 using namespace std;
 
-ConwayCube createCube(const vector<string> &input) {
-    auto conwayCube = ConwayCube();
+template<size_t V>
+GameOfLife<V> createGameFromPlane(const vector<string> &input) {
+    GameOfLife<V> game = GameOfLife<V>();
 
-    int z = 0;
+    array<int, V> nullCell{};
+    nullCell.fill(0);
     for (int y = 0; y < input.size(); ++y) {
         for (int x = 0; x < input.at(0).size(); ++x) {
             if (input.at(y).at(x) == '#') {
-                auto found = Cube({x, y, z});
-                conwayCube.addActive(found);
+                array<int, V> cell = nullCell;
+                cell[0] = x;
+                cell[1] = y;
+                game.addActive(cell);
             }
         }
     }
 
-    return conwayCube;
+    return game;
 }
 
-ConwayHyperCube createHyperCube(const vector<string> &input) {
-    auto conwayCube = ConwayHyperCube();
-
-    int w = 0;
-    int z = 0;
-    for (int y = 0; y < input.size(); ++y) {
-        for (int x = 0; x < input.at(0).size(); ++x) {
-            if (input.at(y).at(x) == '#') {
-                auto found = HyperCube({x, y, z, w});
-                conwayCube.addActive(found);
-            }
-        }
-    }
-
-    return conwayCube;
-}
 
 int first(const vector<string> &input) {
-    ConwayCube cube = createCube(input);
+    auto game = createGameFromPlane<3>(input);
 
-    cube.advanceToGeneration(6);
+    game.advanceToGeneration(6);
 
-    cout << cube.size();
+    cout << game.size();
 
     return 0;
 }
 
 int second(const vector<string> &input) {
-    ConwayHyperCube hyperCube = createHyperCube(input);
+    auto game = createGameFromPlane<4>(input);
 
-    hyperCube.advanceToGeneration(6);
+    game.advanceToGeneration(6);
 
-    cout << hyperCube.size();
+    cout << game.size();
 
     return 0;
 }
 
 int main() {
-    const vector<string> input = read("../Input/Day_17");
+    const vector<string> input = read("Input/Day_17");
 
     first(input);
     cout << endl;

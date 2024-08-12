@@ -4,28 +4,23 @@
 
 #include "Haufen.h"
 
-template <class D>
-Haufen<D>::Haufen() = default;
+template <size_t V>
+Haufen<V>::Haufen() = default;
 
-template <class D>
-int Haufen<D>::size() {
-    return haufen.size();
-}
-
-template <class D>
-int Haufen<D>::addElement(D cube) {
-    if (haufen.count(cube) == 0) {
-        haufen[cube] = 1;
+template <size_t V>
+int Haufen<V>::addElement(array<int, V> cell) {
+    if (haufen.count(cell) == 0) {
+        haufen[cell] = 1;
     } else {
-        haufen[cube] = haufen[cube] + 1;
+        haufen[cell] = haufen[cell] + 1;
     }
 
     return 0;
 }
 
-template <class D>
-vector<D> Haufen<D>::getElementByOccurrence(int occurrence) {
-    vector<D> cubes;
+template <size_t V>
+vector<array<int, V>> Haufen<V>::getElementByOccurrence(int occurrence) {
+    vector<array<int, V>> cubes;
 
     for (auto &entry: haufen) {
         if (entry.second == occurrence) {
