@@ -25,7 +25,7 @@ public:
 
     int advanceToGeneration(int generation);
 
-protected:
+private:
     Haufen<V> createHaufen();
 
     int addNeighbours(Haufen<V> &haufen, int dimension, array<int, V> cell, bool allNull);
